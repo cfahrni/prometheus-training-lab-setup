@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prometheus
+spec:
+  serviceAccountName: prometheus-{{ .Values.user }}
+  serviceMonitorNamespaceSelector:
+    matchLabels:
+      user: {{ .Values.user }}
+  serviceMonitorSelector:
+    matchLabels:
+      user: {{ .Values.user }}
+  resources:
+    requests:
+      memory: 400Mi
+  enableAdminAPI: false
+  storage:
+    volumeClaimTemplate:
+      spec:
+        resources:
+          requests:
+            storage: 2Gi
