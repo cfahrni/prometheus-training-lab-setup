@@ -1,3 +1,4 @@
+{{- define "ruler.ruler" }}
 apiVersion: monitoring.coreos.com/v1
 kind: ThanosRuler
 metadata:
@@ -13,3 +14,4 @@ spec:
   ruleNamespaceSelector:
     matchLabels:
       user: {{ .Values.user }}
+{{- end }}

@@ -1,3 +1,4 @@
+{{- define "query.deploy" }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -32,3 +33,4 @@ spec:
           name: http
         - containerPort: 10901
           name: grpc
+{{- end }}

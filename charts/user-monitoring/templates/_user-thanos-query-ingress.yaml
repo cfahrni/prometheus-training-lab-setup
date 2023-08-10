@@ -1,3 +1,4 @@
+{{- define "query.ingress" }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -5,21 +6,24 @@ metadata:
     haproxy.org/auth-secret: basic-auth
     haproxy.org/auth-type: basic-auth
     haproxy.org/auth-realm: Authentication Required
-  name: user1-thanos-ruler
+  labels:
+    app.kubernetes.io/name: {{ .Values.user }}-thanos
+  name: {{ .Values.user }}-thanos
 spec:
   ingressClassName: haproxy
   rules:
-  - host: user1-thanos-ruler.training.cluster.acend.ch
+  - host: {{ .Values.user }}-thanos-query.training.cluster.acend.ch
     http:
       paths:
       - backend:
           service:
-            name: thanos-ruler-operated
+            name: thanos-query
             port:
               number: 10902
         path: /
         pathType: ImplementationSpecific
   tls:
   - hosts:
-    - user1-thanos-ruler.training.cluster.acend.ch
+    - {{ .Values.user }}-thanos-query.training.cluster.acend.ch
     secretName: acend-wildcard
+{{- end }}

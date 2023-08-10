@@ -1,1 +1,25 @@
 user: user1
+
+# alertmanager
+alertmanager:
+  enabled: true
+
+# grafana
+grafana:
+  enabled: true
+
+# prometheus
+prometheus:
+  enabled: true
+
+# pushgeitwey
+pushgateway:
+  enabled: true
+
+# thanos-ruler
+ruler:
+  enabled: true
+
+# thanos-query
+query:
+  enabled: true

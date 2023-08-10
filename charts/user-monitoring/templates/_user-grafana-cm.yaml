@@ -1,3 +1,4 @@
+{{- define "grafana.dashboardprovider" }}
 kind: ConfigMap
 apiVersion: v1
 metadata:
@@ -15,3 +16,4 @@ data:
         path: /var/lib/grafana/dashboards/general
       orgId: 1
       type: file
+{{- end }}

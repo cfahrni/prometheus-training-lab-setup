@@ -1,0 +1,44 @@
+# alertmanager
+
+{{- if .Values.alertmanager.enabled }}
+  {{- template "alertmanager.alertmanager" . }}
+{{- end }}
+
+# grafana
+{{- if .Values.grafana.enabled }}
+  {{- template "grafana.datasource" . }}
+  {{- template "grafana.dashboardprovider" . }}
+  {{- template "grafana.rolebinding" . }}
+  {{- template "grafana.svc" . }}
+  {{- template "grafana.sa" . }}
+  {{- template "grafana.deploy" . }}
+  {{- template "grafana.ingress" . }}
+{{- end }}
+
+# prometheus
+{{- if .Values.prometheus.enabled }}
+  {{- template "prometheus.ingress" . }}
+  {{- template "prometheus.prometheus" . }}
+  {{- template "prometheus.role" . }}
+  {{- template "prometheus.rolebinding" . }}
+  {{- template "prometheus.sa" . }}
+{{- end }}
+
+{{- if .Values.pushgateway.enabled }}
+  {{- template "pushgateway.deploy" . }}
+  {{- template "pushgateway.servicemonitor" . }}
+  {{- template "pushgateway.svc" . }}
+{{- end }}
+
+# thanos-ruler
+{{- if .Values.ruler.enabled }}
+  {{- template "ruler.ruler" . }}
+  {{- template "ruler.ingress" . }}
+{{- end }}
+
+# thanos-query
+{{- if .Values.query.enabled }}
+  {{- template "query.deploy" . }}
+  {{- template "query.ingress" . }}
+  {{- template "query.svc" . }}
+{{- end }}

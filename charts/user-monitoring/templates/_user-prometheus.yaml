@@ -1,3 +1,4 @@
+{{- define "prometheus.prometheus" }}
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
@@ -25,3 +26,4 @@ spec:
   enableAdminAPI: true
   externalLabels:
     monitoring: {{ .Values.user }}
+{{- end }}

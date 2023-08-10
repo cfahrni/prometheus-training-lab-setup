@@ -1,3 +1,4 @@
+{{- define "pushgateway.svc" }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -13,3 +14,4 @@ spec:
   selector:
     app.kubernetes.io/name: pushgateway
   type: ClusterIP
+{{- end }}
