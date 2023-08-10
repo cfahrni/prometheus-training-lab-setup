@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: thanos-query
+  name: thanos-query
+  namespace: {{ .Values.user }}-monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: thanos-query
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: thanos-query
+    spec:
+      containers:
+      - args:
+        - query
+        - --log.level=debug
+        - --query.replica-label=prometheus_replica
+        - --query.replica-label=thanos_ruler_replica
+        - --endpoint=prometheus-operated.{{ .Values.user }}-monitoring.svc.cluster.local:10901
+        - --endpoint=thanos-ruler-operated.{{ .Values.user }}-monitoring.svc.cluster.local:10901
+        - --endpoint=prometheus-operated.monitoring.svc.cluster.local:10901
+        - --store.unhealthy-timeout=3d
+        image: quay.io/thanos/thanos:v0.25.1
+        name: thanos-query
+        ports:
+        - containerPort: 10902
+          name: http
+        - containerPort: 10901
+          name: grpc

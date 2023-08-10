@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ThanosRuler
+metadata:
+  labels:
+    app.kubernetes.io/name: thanos-ruler
+  name: thanos-ruler
+spec:
+  alertQueryUrl: {{ .Values.user }}-thanos-query.training.cluster.acend.ch
+  evaluationInterval: 10s
+  queryEndpoints:
+  - thanos-query.{{ .Values.user }}-monitoring.svc.cluster.local:10902
+  ruleSelector: {}
+  ruleNamespaceSelector:
+    matchLabels:
+      user: {{ .Values.user }}

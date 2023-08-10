@@ -1,0 +1,17 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: grafana-dashboardproviders
+  labels:
+    app.kubernetes.io/name: grafana
+data:
+  dashboardproviders.yaml: |
+    apiVersion: 1
+    providers:
+    - disableDeletion: false
+      editable: false
+      name: general
+      options:
+        path: /var/lib/grafana/dashboards/general
+      orgId: 1
+      type: file
