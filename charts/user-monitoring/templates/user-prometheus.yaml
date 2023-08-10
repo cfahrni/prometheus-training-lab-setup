@@ -20,10 +20,6 @@ spec:
   resources:
     requests:
       memory: 400Mi
-<<<<<<< HEAD
-  enableAdminAPI: false
-=======
   enableAdminAPI: true
   externalLabels:
     monitoring: {{ .Values.user }}
->>>>>>> 2acef0e (Update prometheus config)
