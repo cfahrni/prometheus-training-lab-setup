@@ -1,4 +1,5 @@
 {{- define "ruler.ruler" }}
+---
 apiVersion: monitoring.coreos.com/v1
 kind: ThanosRuler
 metadata:

@@ -1,4 +1,5 @@
 {{- define "grafana.dashboardprovider" }}
+---
 kind: ConfigMap
 apiVersion: v1
 metadata:

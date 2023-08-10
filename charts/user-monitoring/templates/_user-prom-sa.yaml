@@ -1,4 +1,5 @@
 {{- define "prometheus.sa" }}
+---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
