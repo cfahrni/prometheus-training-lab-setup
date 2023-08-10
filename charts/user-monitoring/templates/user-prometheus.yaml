@@ -3,14 +3,27 @@ kind: Prometheus
 metadata:
   name: prometheus
 spec:
+  scrapeInterval: 10s
   serviceAccountName: prometheus-{{ .Values.user }}
   serviceMonitorNamespaceSelector:
     matchLabels:
       user: {{ .Values.user }}
-  serviceMonitorSelector:
+  serviceMonitorSelector: {}
+  podMonitorNamespaceSelector:
     matchLabels:
       user: {{ .Values.user }}
+  podMonitorSelector: {}
+  probeNamespaceSelector:
+    matchLabels:
+      user: {{ .Values.user }}
+  probeSelector: {}
   resources:
     requests:
       memory: 400Mi
+<<<<<<< HEAD
   enableAdminAPI: false
+=======
+  enableAdminAPI: true
+  externalLabels:
+    monitoring: {{ .Values.user }}
+>>>>>>> 2acef0e (Update prometheus config)
