@@ -1,25 +1,25 @@
-user: user1
+user: userX # Replace me
 
 # alertmanager
 alertmanager:
-  enabled: true
+  enabled: false
 
 # grafana
 grafana:
-  enabled: true
+  enabled: false
 
 # prometheus
 prometheus:
-  enabled: true
+  enabled: false
 
-# pushgeitwey
+# pushgateway
 pushgateway:
-  enabled: true
+  enabled: false
 
 # thanos-ruler
 ruler:
-  enabled: true
+  enabled: false
 
 # thanos-query
 query:
-  enabled: true
+  enabled: false
