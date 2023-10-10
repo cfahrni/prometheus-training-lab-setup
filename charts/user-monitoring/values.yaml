@@ -6,7 +6,13 @@ alertmanager:
 
 # grafana
 grafana:
-  enabled: false
+  datasources:
+  - name: prometheus
+    access: proxy
+    editable: false
+    type: prometheus
+    url: http://prometheus-operated.user4-monitoring.svc.cluster.local:9090
+  enabled: true
 
 # prometheus
 prometheus:
