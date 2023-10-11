@@ -1,0 +1,24 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: <user>-demo
+  namespace: argocd
+spec:
+  destination:
+    namespace: <user>
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: 'https://gitea.training.cluster.acend.ch/<user>/prometheus-training-lab-setup'
+    path: charts/user-monitoring-demo/
+    targetRevision: main
+    helm:
+      values: |
+        user: <user>
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Replace=true

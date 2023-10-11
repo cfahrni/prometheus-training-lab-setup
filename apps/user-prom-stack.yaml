@@ -1,0 +1,42 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: <user>-prom-stack
+  namespace: argocd
+spec:
+  destination:
+    namespace: <user>-monitoring
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: 'https://gitea.training.cluster.acend.ch/<user>/prometheus-training-lab-setup'
+    path: charts/user-monitoring/
+    targetRevision: main
+    helm:
+      values: |
+        user: <user>
+        # alertmanager
+        alertmanager:
+          enabled: false
+        # grafana
+        grafana:
+          enabled: false
+        # prometheus
+        prometheus:
+          enabled: false
+        # pushgateway
+        pushgateway:
+          enabled: false
+        # thanos-ruler
+        ruler:
+          enabled: false
+        # thanos-query
+        query:
+          enabled: false
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Replace=true
