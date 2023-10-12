@@ -25,9 +25,13 @@ spec:
         - --query.replica-label=thanos_ruler_replica
         - --endpoint=prometheus-operated.{{ .Values.user }}-monitoring.svc.cluster.local:10901
         - --endpoint=thanos-ruler-operated.{{ .Values.user }}-monitoring.svc.cluster.local:10901
-        - --endpoint=prometheus-operated.monitoring.svc.cluster.local:10901
+        - --endpoint=kube-prometheus-stack-thanos-discovery.svc.cluster.local:10901
+        - --endpoint=dnssrv+_grpc.kube-prometheus-stack-thanos-discovery.monitoring.svc.cluster.local
+        - --endpoint=dnssrv+_grpc._tcp.kube-prometheus-stack-thanos-discovery.monitoring.svc.cluster.local
+        - --endpoint=dnssrv+prometheus-operated.monitoring.svc.cluster.local
+        - --store=dnssrv+_grpc._tcp.kube-prometheus-stack-thanos-discovery.monitoring.svc.cluster.local
         - --store.unhealthy-timeout=3d
-        image: quay.io/thanos/thanos:v0.25.1
+        image: quay.io/thanos/thanos:v0.32.3
         name: thanos-query
         ports:
         - containerPort: 10902
