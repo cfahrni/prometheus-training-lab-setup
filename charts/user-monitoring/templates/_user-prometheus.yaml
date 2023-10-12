@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: prometheus
   name: prometheus
 spec:
-  scrapeInterval: 10s
+  scrapeInterval: 60s
   serviceAccountName: prometheus-{{ .Values.user }}
   serviceMonitorNamespaceSelector:
     matchLabels:
