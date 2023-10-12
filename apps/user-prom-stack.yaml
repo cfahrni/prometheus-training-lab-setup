@@ -16,24 +16,6 @@ spec:
     helm:
       values: |
         user: <user>
-        # alertmanager
-        alertmanager:
-          enabled: false
-        # grafana
-        grafana:
-          enabled: false
-        # prometheus
-        prometheus:
-          enabled: false
-        # pushgateway
-        pushgateway:
-          enabled: false
-        # thanos-ruler
-        ruler:
-          enabled: false
-        # thanos-query
-        query:
-          enabled: false
   syncPolicy:
     automated:
       prune: true

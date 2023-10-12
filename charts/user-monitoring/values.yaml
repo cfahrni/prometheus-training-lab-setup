@@ -1,7 +1,11 @@
-user: userX # Replace me
+user: <user> # Replace me
 
-# alertmanager
-alertmanager:
+# prometheus
+prometheus:
+  enabled: false
+
+# thanos-query
+query:
   enabled: false
 
 # grafana
@@ -11,21 +15,18 @@ grafana:
     access: proxy
     editable: false
     type: prometheus
-    url: http://prometheus-operated.user4-monitoring.svc.cluster.local:9090
-  enabled: true
-
-# prometheus
-prometheus:
+    url: http://prometheus-operated.<user>-monitoring.svc.cluster.local:9090
   enabled: false
 
 # pushgateway
 pushgateway:
   enabled: false
 
+# alertmanager
+alertmanager:
+  enabled: false
+
 # thanos-ruler
 ruler:
   enabled: false
-
-# thanos-query
-query:
-  enabled: false
+  
