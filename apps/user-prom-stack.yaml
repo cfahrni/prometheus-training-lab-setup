@@ -13,9 +13,6 @@ spec:
     repoURL: 'https://gitea.training.cluster.acend.ch/<user>/prometheus-training-lab-setup'
     path: charts/user-monitoring/
     targetRevision: main
-    helm:
-      values: |
-        user: <user>
   syncPolicy:
     automated:
       prune: true
