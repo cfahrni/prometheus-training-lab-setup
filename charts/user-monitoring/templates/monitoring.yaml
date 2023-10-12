@@ -4,6 +4,13 @@
   {{- template "alertmanager.alertmanager" . }}
 {{- end }}
 
+# blackboxexporter
+{{- if .Values.blackboxexporter.enabled }}
+  {{- template "blackboxexporter.cm" . }}
+  {{- template "blackboxexporter.deploy" . }}
+  {{- template "blackboxexporter.svc" . }}
+{{- end }}
+
 # grafana
 {{- if .Values.grafana.enabled }}
   {{- template "grafana.datasource" . }}

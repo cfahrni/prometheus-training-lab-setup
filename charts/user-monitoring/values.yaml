@@ -21,6 +21,10 @@ grafana:
 # pushgateway
 pushgateway:
   enabled: false
+  
+# blackboxexporter
+blackboxexporter:
+  enabled: false
 
 # alertmanager
 alertmanager:
