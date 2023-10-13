@@ -2,6 +2,10 @@
 
 {{- if .Values.alertmanager.enabled }}
   {{- template "alertmanager.alertmanager" . }}
+  {{- template "alertmanager.config-mailcatcher" . }}
+  {{- template "mailcatcher.deploy" . }}
+  {{- template "mailcatcher.svc" . }}
+  {{- template "mailcatcher.ingress" . }}
 {{- end }}
 
 # blackboxexporter

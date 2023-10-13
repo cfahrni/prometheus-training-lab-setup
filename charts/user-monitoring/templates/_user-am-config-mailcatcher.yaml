@@ -1,0 +1,19 @@
+{{- define "alertmanager.config-mailcatcher" }}
+---
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: {{ .Values.user }}-mailcatcher
+  labels:
+    alertmanagerConfig: {{ .Values.user }}-mailcatcher
+spec:
+  route:
+    receiver: mailcatcher
+  receivers:
+    - name: mailcatcher
+      emailConfigs:
+        - to: alert@localhost
+          from: prometheus-operator@localhost
+          smarthost: mailcatcher:1025
+          requireTLS: false
+{{- end }}

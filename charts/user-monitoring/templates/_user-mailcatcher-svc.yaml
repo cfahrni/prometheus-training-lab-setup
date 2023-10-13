@@ -1,0 +1,22 @@
+{{- define "mailcatcher.svc" }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mailcatcher
+  labels:
+    app.kubernetes.io/name: mailcatcher
+spec:
+  ports:
+  - name: http
+    port: 1080
+    protocol: TCP
+    targetPort: http
+  - name: smtp
+    port: 1025
+    protocol: TCP
+    targetPort: smtp
+  selector:
+    app.kubernetes.io/name: mailcatcher
+  type: ClusterIP
+{{- end }}
