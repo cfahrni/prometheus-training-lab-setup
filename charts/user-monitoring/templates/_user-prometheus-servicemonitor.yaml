@@ -1,0 +1,20 @@
+{{- define "prometheus.servicemonitor" }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/name: prometheus
+    user: {{ .Values.user }}
+  name: {{ .Values.user }}-prometheus-servicemonitor
+spec:
+  endpoints:
+  - path: /metrics
+    port: web
+  namespaceSelector:
+    matchNames:
+    - {{ .Values.user }}-monitoring
+  selector:
+    matchLabels:
+      operated-prometheus: 'true'
+{{- end }}

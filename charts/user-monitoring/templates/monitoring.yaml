@@ -26,6 +26,7 @@
 {{- if .Values.prometheus.enabled }}
   {{- template "prometheus.ingress" . }}
   {{- template "prometheus.prometheus" . }}
+  {{- template "prometheus.servicemonitor" . }}
   {{- template "prometheus.role" . }}
   {{- template "prometheus.rolebinding" . }}
   {{- template "prometheus.sa" . }}
