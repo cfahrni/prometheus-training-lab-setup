@@ -1,36 +1,28 @@
 user: <user> # Replace me
-
 # prometheus
 prometheus:
   enabled: false
-
 # thanos-query
 query:
   enabled: false
-
 # grafana
 grafana:
+  enabled: false
   datasources:
   - name: prometheus
     access: proxy
     editable: false
     type: prometheus
     url: http://prometheus-operated.<user>-monitoring.svc.cluster.local:9090
-  enabled: false
-
 # pushgateway
 pushgateway:
   enabled: false
-  
 # blackboxexporter
 blackboxexporter:
   enabled: false
-
 # alertmanager
 alertmanager:
   enabled: false
-
 # thanos-ruler
 ruler:
   enabled: false
-  
