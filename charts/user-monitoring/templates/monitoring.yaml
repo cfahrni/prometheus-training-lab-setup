@@ -19,6 +19,7 @@
   {{- template "grafana.svc" . }}
   {{- template "grafana.sa" . }}
   {{- template "grafana.deploy" . }}
+  {{- template "grafana.servicemonitor" . }}
   {{- template "grafana.ingress" . }}
 {{- end }}
 
