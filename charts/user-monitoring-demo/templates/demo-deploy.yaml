@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - image: quay.io/acend/example-web-python
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: example-web-python
       restartPolicy: Always
