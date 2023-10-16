@@ -23,4 +23,30 @@ spec:
         resources:
           requests:
             storage: 100Mi
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    haproxy.org/auth-secret: basic-auth
+    haproxy.org/auth-type: basic-auth
+    haproxy.org/auth-realm: Authentication Required
+  name: {{ .Values.user }}-alertmanager
+spec:
+  ingressClassName: haproxy
+  rules:
+  - host: {{ .Values.user }}-alertmanager.training.cluster.acend.ch
+    http:
+      paths:
+      - backend:
+          service:
+            name: alertmanager-operated
+            port:
+              number: 9093
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - {{ .Values.user }}-alertmanager.training.cluster.acend.ch
+    secretName: acend-wildcard
 {{- end }}
