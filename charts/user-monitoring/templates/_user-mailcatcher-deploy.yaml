@@ -1,0 +1,28 @@
+{{- define "mailcatcher.deploy" }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: mailcatcher
+  name: mailcatcher
+  namespace: {{ .Values.user }}-monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mailcatcher
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: mailcatcher
+    spec:
+      containers:
+      - image: sj26/mailcatcher:v0.9.0
+        name: mailcatcher
+        ports:
+        - containerPort: 1080
+          name: http
+        - containerPort: 1025
+          name: smtp
+{{- end }}
