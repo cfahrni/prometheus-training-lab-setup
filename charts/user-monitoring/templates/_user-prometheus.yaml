@@ -7,6 +7,10 @@ metadata:
     app.kubernetes.io/name: prometheus
   name: prometheus
 spec:
+  {{- if .Values.query.enabled }}
+  thanos:
+    image: quay.io/thanos/thanos:v0.32.3
+  {{- end }}
   scrapeInterval: 60s
   serviceAccountName: prometheus-{{ .Values.user }}
   serviceMonitorNamespaceSelector:
