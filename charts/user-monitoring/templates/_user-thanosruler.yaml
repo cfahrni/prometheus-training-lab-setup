@@ -8,14 +8,16 @@ metadata:
   name: thanos-ruler
 spec:
   image: quay.io/thanos/thanos:v0.28.1
-  alertQueryUrl: {{ .Values.user }}-thanos-query.training.cluster.acend.ch
   evaluationInterval: 10s
   queryEndpoints:
-  - dnssrv+_http._tcp.thanos-querier.{{ .Values.user }}-monitoring.svc.cluster.local
+  - dnssrv+_http._tcp.thanos-query:10902
   ruleSelector: {}
   ruleNamespaceSelector:
     matchLabels:
       user: {{ .Values.user }}
+  alertmanagersConfig:
+    key: alertmanager-configs.yaml
+    name: thanosruler-alertmanager-config
 ---
 apiVersion: v1
 kind: Secret
@@ -26,5 +28,5 @@ stringData:
     alertmanagers:
     - static_configs:
       - "dnssrv+_web._tcp.alertmanager-operated.{{ .Values.user }}-monitoring.svc.cluster.local"
-      api_version: v2```
+      api_version: v2
 {{- end }}
