@@ -5,7 +5,7 @@ kind: AlertmanagerConfig
 metadata:
   name: {{ .Values.user }}-mailcatcher
   labels:
-    alertmanagerConfig: {{ .Values.user }}-mailcatcher
+    alertmanagerConfig: {{ .Values.user }}-alertmanager
 spec:
   route:
     receiver: mailcatcher

@@ -11,8 +11,10 @@ spec:
     matchNames:
     - {{ .Values.user }}-monitoring
   alertmanagerConfigSelector:
+    matchLabels:
+      alertmanagerConfig: {{ .Values.user }}-alertmanager
   image: quay.io/prometheus/alertmanager:v0.25.0
-  replicas: 2
+  replicas: 1
   resources:
     requests:
       cpu: 10m
