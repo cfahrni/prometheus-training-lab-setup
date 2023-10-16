@@ -8,9 +8,13 @@ metadata:
     alertmanagerConfig: {{ .Values.user }}-alertmanager
 spec:
   route:
-    receiver: mailcatcher
+    groupBy: ['job']
+    groupWait: 30s
+    groupInterval: 5m
+    repeatInterval: 12h
+    receiver: 'mailcatcher'
   receivers:
-    - name: mailcatcher
+    - name: 'mailcatcher'
       emailConfigs:
         - to: alert@localhost
           from: prometheus-operator@localhost
