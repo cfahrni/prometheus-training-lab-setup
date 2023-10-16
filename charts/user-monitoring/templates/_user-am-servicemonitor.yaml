@@ -1,0 +1,21 @@
+{{- define "alertmanager.sm" }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/name: mariadb
+  name: alertmanager
+spec:
+  endpoints:
+    - interval: 60s
+      port: web
+      scheme: http
+      path: /metrics
+  namespaceSelector:
+    matchNames:
+    - {{ .Values.user }}-monitoring
+  selector:
+    matchLabels:
+      operated-alertmanager: 'true'
+{{- end }}

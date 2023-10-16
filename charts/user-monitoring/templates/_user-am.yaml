@@ -4,7 +4,23 @@ apiVersion: monitoring.coreos.com/v1
 kind: Alertmanager
 metadata:
   labels:
-    app.kubernetes.io/name: {{ .Values.user }}-am
-  name: {{ .Values.user }}-am
-spec: {}
+    app.kubernetes.io/name: {{ .Values.user }}-alertmanager
+  name: {{ .Values.user }}-alertmanager
+spec:
+  alertmanagerConfigNamespaceSelector:
+    matchNames:
+    - {{ .Values.user }}-monitoring
+  alertmanagerConfigSelector:
+  image: quay.io/prometheus/alertmanager:v0.25.0
+  replicas: 2
+  resources:
+    requests:
+      cpu: 10m
+      memory: 40Mi
+  storage:
+    volumeClaimTemplate:
+      spec:
+        resources:
+          requests:
+            storage: 100Mi
 {{- end }}
