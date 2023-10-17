@@ -7,6 +7,9 @@ metadata:
     app.kubernetes.io/name: {{ .Values.user }}-alertmanager
   name: {{ .Values.user }}-alertmanager
 spec:
+  alertmanagerConfigNamespaceSelector:
+    matchLabels:
+      user: {{ .Values.user }}-alertmanager
   alertmanagerConfigSelector:
     matchLabels:
       alertmanagerConfig: {{ .Values.user }}-alertmanager
