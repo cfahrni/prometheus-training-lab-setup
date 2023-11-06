@@ -1,4 +1,4 @@
-user: <user> # Replace me
+user: cfahrni # Replace me
 # prometheus
 prometheus:
   enabled: false

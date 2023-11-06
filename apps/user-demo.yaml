@@ -2,15 +2,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: <user>-demo
+  name: cfahrni-demo
   namespace: argocd
 spec:
   destination:
-    namespace: <user>
+    namespace: cfahrni
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: 'https://gitea.training.cluster.acend.ch/<user>/prometheus-training-lab-setup'
+    repoURL: 'https://github.com/cfahrni/prometheus-training-lab-setup'
     path: user-demo/
     targetRevision: main
   syncPolicy:

@@ -2,15 +2,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: <user>-prom-stack
+  name: cfahrni-prom-stack
   namespace: argocd
 spec:
   destination:
-    namespace: <user>-monitoring
+    namespace: cfahrni-monitoring
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: 'https://gitea.training.cluster.acend.ch/<user>/prometheus-training-lab-setup'
+    repoURL: 'https://github.com/cfahrni/prometheus-training-lab-setup'
     path: charts/user-monitoring/
     targetRevision: main
   syncPolicy:
