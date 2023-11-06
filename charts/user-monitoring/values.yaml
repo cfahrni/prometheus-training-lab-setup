@@ -1,7 +1,7 @@
 user: cfahrni # Replace me
 # prometheus
 prometheus:
-  enabled: false
+  enabled: true
 # thanos-query
 query:
   enabled: false
