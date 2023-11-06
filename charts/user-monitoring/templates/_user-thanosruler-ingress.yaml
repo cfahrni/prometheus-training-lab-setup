@@ -9,7 +9,6 @@ metadata:
     haproxy.org/auth-realm: Authentication Required
   name: {{ .Values.user }}-thanos-ruler
 spec:
-  ingressClassName: haproxy
   rules:
   - host: {{ .Values.user }}-thanos-ruler.training.cluster.acend.ch
     http:

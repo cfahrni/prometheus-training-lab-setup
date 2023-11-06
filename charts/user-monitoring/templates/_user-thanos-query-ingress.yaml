@@ -11,7 +11,6 @@ metadata:
     app.kubernetes.io/name: {{ .Values.user }}-thanos
   name: {{ .Values.user }}-thanos
 spec:
-  ingressClassName: haproxy
   rules:
   - host: {{ .Values.user }}-thanos-query.training.cluster.acend.ch
     http:

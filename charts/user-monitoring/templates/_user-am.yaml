@@ -35,7 +35,6 @@ metadata:
     haproxy.org/auth-realm: Authentication Required
   name: {{ .Values.user }}-alertmanager
 spec:
-  ingressClassName: haproxy
   rules:
   - host: {{ .Values.user }}-alertmanager.training.cluster.acend.ch
     http:

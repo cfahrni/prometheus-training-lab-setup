@@ -11,7 +11,6 @@ metadata:
     app.kubernetes.io/name: {{ .Values.user }}-mailcatcher
   name: {{ .Values.user }}-mailcatcher
 spec:
-  ingressClassName: haproxy
   rules:
   - host: {{ .Values.user }}-mailcatcher.training.cluster.acend.ch
     http:

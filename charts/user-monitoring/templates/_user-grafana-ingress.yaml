@@ -9,7 +9,6 @@ metadata:
     haproxy.org/auth-realm: Authentication Required
   name: grafana
 spec:
-  ingressClassName: haproxy
   rules:
   - host: {{ .Values.user }}-grafana.training.cluster.acend.ch
     http:
