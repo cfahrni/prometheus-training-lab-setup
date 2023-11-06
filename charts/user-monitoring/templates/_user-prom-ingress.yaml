@@ -3,10 +3,6 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    haproxy.org/auth-secret: basic-auth
-    haproxy.org/auth-type: basic-auth
-    haproxy.org/auth-realm: Authentication Required
   labels:
     app.kubernetes.io/name: {{ .Values.user }}-prometheus
   name: {{ .Values.user }}-prometheus
@@ -22,8 +18,4 @@ spec:
               number: 9090
         path: /
         pathType: ImplementationSpecific
-  tls:
-  - hosts:
-    - {{ .Values.user }}-prometheus.training.cluster.acend.ch
-    secretName: acend-wildcard
 {{- end }}

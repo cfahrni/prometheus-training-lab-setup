@@ -29,10 +29,6 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    haproxy.org/auth-secret: basic-auth
-    haproxy.org/auth-type: basic-auth
-    haproxy.org/auth-realm: Authentication Required
   name: {{ .Values.user }}-alertmanager
 spec:
   rules:
@@ -46,8 +42,4 @@ spec:
               number: 9093
         path: /
         pathType: ImplementationSpecific
-  tls:
-  - hosts:
-    - {{ .Values.user }}-alertmanager.training.cluster.acend.ch
-    secretName: acend-wildcard
 {{- end }}

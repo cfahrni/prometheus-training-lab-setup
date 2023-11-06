@@ -3,10 +3,6 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    haproxy.org/auth-secret: basic-auth
-    haproxy.org/auth-type: basic-auth
-    haproxy.org/auth-realm: Authentication Required
   labels:
     app.kubernetes.io/name: {{ .Values.user }}-mailcatcher
   name: {{ .Values.user }}-mailcatcher
@@ -22,8 +18,4 @@ spec:
               number: 1080
         path: /
         pathType: ImplementationSpecific
-  tls:
-  - hosts:
-    - {{ .Values.user }}-mailcatcher.training.cluster.acend.ch
-    secretName: acend-wildcard
 {{- end }}
