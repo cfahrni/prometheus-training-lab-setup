@@ -8,6 +8,12 @@ query:
 # grafana
 grafana:
   enabled: true
+  datasources:
+  - name: prometheus
+    access: proxy
+    editable: false
+    type: prometheus
+    url: http://prometheus-operated:9090
 # blackboxexporter
 blackboxexporter:
   enabled: false
