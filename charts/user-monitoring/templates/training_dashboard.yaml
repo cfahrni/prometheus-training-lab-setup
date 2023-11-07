@@ -1,0 +1,152 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    dashboard: 'true'
+  name: training-dashboard
+data:
+  training-dashboard.json: |-
+    {
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": {
+              "type": "grafana",
+              "uid": "-- Grafana --"
+            },
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+          }
+        ]
+      },
+      "editable": true,
+      "fiscalYearStartMonth": 0,
+      "graphTooltip": 0,
+      "id": 1,
+      "links": [],
+      "liveNow": false,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P41DA25A942324D4D"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 0
+                  },
+                  {
+                    "color": "orange",
+                    "value": 10
+                  },
+                  {
+                    "color": "green",
+                    "value": 25
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 0
+          },
+          "id": 1,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
+          },
+          "pluginVersion": "10.0.3",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P41DA25A942324D4D"
+              },
+              "editorMode": "code",
+              "expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"$disk\", instance=\"10.244.0.79:9100\"} * 100) / node_filesystem_size_bytes{mountpoint=\"$disk\", instance=\"10.244.0.79:9100\"})",
+              "instant": false,
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Disk Available",
+          "type": "stat"
+        }
+      ],
+      "refresh": "",
+      "schemaVersion": 38,
+      "style": "dark",
+      "tags": [],
+      "templating": {
+        "list": [
+          {
+            "current": {
+              "selected": true,
+              "text": "/data",
+              "value": "/data"
+            },
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P41DA25A942324D4D"
+            },
+            "definition": "label_values(node_filesysem_avail_bytes(instance=\"instance=\"10.244.0.79:9100\"},mountpoint)",
+            "hide": 0,
+            "includeAll": false,
+            "label": "Select disk",
+            "multi": false,
+            "name": "disk",
+            "options": [],
+            "query": {
+              "query": "label_values(node_filesysem_avail_bytes(instance=\"instance=\"10.244.0.79:9100\"},mountpoint)",
+              "refId": "PrometheusVariableQueryEditor-VariableQuery"
+            },
+            "refresh": 1,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 0,
+            "type": "query"
+          }
+        ]
+      },
+      "time": {
+        "from": "now-6h",
+        "to": "now"
+      },
+      "timepicker": {},
+      "timezone": "",
+      "title": "happy_little_dashboard",
+      "uid": "eb2496b8-1942-44dd-9850-08a411ed8057",
+      "version": 3,
+      "weekStart": ""
+    }
