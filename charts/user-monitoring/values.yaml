@@ -4,7 +4,7 @@ prometheus:
   enabled: true
 # thanos-query
 query:
-  enabled: false
+  enabled: true
 # grafana
 grafana:
   enabled: false
