@@ -11,4 +11,4 @@ roleRef:
   name: edit
 subjects:
 - kind: ServiceAccount
-  name: prometheus-cfahrni
+  name: system:serviceaccount:cfahrni-monitoring:prometheus-cfahrni
