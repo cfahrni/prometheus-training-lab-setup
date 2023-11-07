@@ -10,6 +10,8 @@ spec:
       port: https
       scheme: https
       path: /metrics
+      tlsConfig:
+        insecureSkipVerify: true
   selector:
     matchLabels:
       prometheus-monitoring: 'true'
