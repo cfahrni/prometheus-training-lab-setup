@@ -7,7 +7,7 @@ query:
   enabled: true
 # grafana
 grafana:
-  enabled: false
+  enabled: true
 # blackboxexporter
 blackboxexporter:
   enabled: false
