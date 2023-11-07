@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cfahrni-node-exporter
+  namespace: argocd
+spec:
+  destination:
+    namespace: cfahrni-monitoring
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: 'https://github.com/cfahrni/prometheus-training-lab-setup'
+    path: node-exporter
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Replace=true
