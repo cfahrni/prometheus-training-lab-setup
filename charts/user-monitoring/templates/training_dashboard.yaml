@@ -35,6 +35,75 @@ data:
             "type": "prometheus",
             "uid": "P41DA25A942324D4D"
           },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red",
+                    "value": null
+                  },
+                  {
+                    "color": "#EAB839",
+                    "value": 10
+                  },
+                  {
+                    "color": "green",
+                    "value": 20
+                  }
+                ]
+              },
+              "unit": "Days"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 0
+          },
+          "id": 2,
+          "options": {
+            "colorMode": "background",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "10.0.3",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P41DA25A942324D4D"
+              },
+              "editorMode": "code",
+              "expr": "round((probe_ssl_earliest_cert_expiry{instance=\"https://www.acend.ch\", protocol=\"https\"}  - time()) / 86400)",
+              "instant": false,
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "SSL Certification Expiry",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P41DA25A942324D4D"
+          },
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -69,7 +138,7 @@ data:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 0
+            "y": 8
           },
           "id": 1,
           "options": {
@@ -147,6 +216,6 @@ data:
       "timezone": "",
       "title": "happy_little_dashboard",
       "uid": "eb2496b8-1942-44dd-9850-08a411ed8057",
-      "version": 3,
+      "version": 1,
       "weekStart": ""
     }
