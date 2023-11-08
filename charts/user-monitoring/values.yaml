@@ -22,7 +22,7 @@ pushgateway:
   enabled: true
 # alertmanager
 alertmanager:
-  enabled: false
+  enabled: true
 # thanos-ruler
 ruler:
-  enabled: false
+  enabled: true
