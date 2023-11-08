@@ -94,7 +94,7 @@ data:
                 "uid": "P41DA25A942324D4D"
               },
               "editorMode": "code",
-              "expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"$disk\", instance=\"10.244.0.79:9100\"} * 100) / node_filesystem_size_bytes{mountpoint=\"$disk\", instance=\"10.244.0.79:9100\"})",
+              "expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"$disk\", instance=~\"10.244.0.*:9100\"} * 100) / node_filesystem_size_bytes{mountpoint=\"$disk\", instance=~\"10.244.0.*:9100\"})",
               "instant": false,
               "range": true,
               "refId": "A"
@@ -120,7 +120,7 @@ data:
               "type": "prometheus",
               "uid": "P41DA25A942324D4D"
             },
-            "definition": "label_values(node_filesysem_avail_bytes(instance=\"instance=\"10.244.0.79:9100\"},mountpoint)",
+            "definition": "label_values(node_filesysem_avail_bytes(instance=~\"10.244.0.*:9100\"},mountpoint)",
             "hide": 0,
             "includeAll": false,
             "label": "Select disk",
@@ -128,7 +128,7 @@ data:
             "name": "disk",
             "options": [],
             "query": {
-              "query": "label_values(node_filesysem_avail_bytes(instance=\"instance=\"10.244.0.79:9100\"},mountpoint)",
+              "query": "label_values(node_filesysem_avail_bytes(instance=~\"10.244.0.*:9100\"},mountpoint)",
               "refId": "PrometheusVariableQueryEditor-VariableQuery"
             },
             "refresh": 1,
