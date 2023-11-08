@@ -9,7 +9,7 @@ metadata:
 spec:
   alertmanagerConfigNamespaceSelector:
     matchLabels:
-      user: {{ .Values.user }}
+      user: {{ .Values.user }}-alertmanager
   alertmanagerConfigSelector:
     matchLabels:
       alertmanagerConfig: {{ .Values.user }}-alertmanager
