@@ -10,3 +10,8 @@ spec:
     staticConfig:
       static:
       - https://www.acend.ch
+  metricRelabelings:
+  - sourceLabels: [instance] #1
+    targetLabel: protocol #2
+    regex: '^(.+):.+' #3
+    replacement: $1 #4
