@@ -31,4 +31,13 @@ spec:
   enableAdminAPI: true
   externalLabels:
     monitoring: {{ .Values.user }}
+  securityContext:
+    fsGroup: 65534
+  storage:
+    disableMountSubPath: true
+    volumeClaimTemplate:
+      spec:
+        resources:
+          requests:
+            storage: 10Gi
 {{- end }}
