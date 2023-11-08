@@ -14,11 +14,6 @@ grafana:
     editable: false
     type: prometheus
     url: http://prometheus-operated:9090
-  - name: prometheus-k8s
-    access: proxy
-    editable: false
-    type: prometheus
-    url: http://prometheus-k8s.monitoring.svc:9090
 # blackboxexporter
 blackboxexporter:
   enabled: true

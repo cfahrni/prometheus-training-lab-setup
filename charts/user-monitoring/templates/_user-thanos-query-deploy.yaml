@@ -28,7 +28,6 @@ spec:
         - --store=dnssrv+prometheus-operated.{{ .Values.user }}-monitoring.svc.cluster.local
         - --store=dnssrv+_web._tcp.prometheus-operated.{{ .Values.user }}-monitoring.svc.cluster.local
         - --store=dnssrv+_grpc._tcp.kube-prometheus-stack-thanos-discovery.monitoring.svc.cluster.local
-        - --store=dnssrv+prometheus-k8s.monitoring.svc.cluster.local
         - --store.unhealthy-timeout=3d
         image: quay.io/thanos/thanos:v0.32.3
         name: thanos-query
