@@ -19,7 +19,7 @@ blackboxexporter:
   enabled: true
 # pushgateway
 pushgateway:
-  enabled: false
+  enabled: true
 # alertmanager
 alertmanager:
   enabled: false
