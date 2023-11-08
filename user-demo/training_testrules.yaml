@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: testrules
+spec:
+  groups:
+    - name: pod-rules
+      rules:
+        - alert: kubePodCrashLooping
+          expr: rate(kube_pod_container_status_restarts_total{job="kube-state-metrics",namespace="cfahrni-monitoring"}[5m]) * 60 * 5 > 0
+          for: 15m
+          annotations:
+            message: Pod {{ $labels.namespace }}/{{ $labels.pod }} ({{ $labels.container }}) is restarting {{ printf "%.2f" $value }} times / 5 minutes.
+          labels:
+            severity: info
