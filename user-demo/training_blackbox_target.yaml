@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+metadata:
+  name: acend-2xx
+spec:
+  module: http_2xx
+  prober:
+    url: blackbox:9115
+  targets:
+    staticConfig:
+      static:
+      - https://www.acend.ch
