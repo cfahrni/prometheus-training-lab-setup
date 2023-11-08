@@ -16,7 +16,7 @@ grafana:
     url: http://prometheus-operated:9090
 # blackboxexporter
 blackboxexporter:
-  enabled: false
+  enabled: true
 # pushgateway
 pushgateway:
   enabled: false
