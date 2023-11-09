@@ -13,3 +13,12 @@ spec:
             message: Pod {{ $labels.namespace }}/{{ $labels.pod }} ({{ $labels.container }}) is restarting {{ printf "%.2f" $value }} times / 5 minutes.
           labels:
             severity: info
+    - name: test-rules
+      rules:
+        - alert: memory-usage-to-high
+          expr: container_memory_usage_bytes{namespace="user6", pod=~"example-spring-boot.*", image!="", container!=""} / 1024 / 1004 > 256
+          for: 1m
+          labels:
+            user: cfahrni
+          annotations:
+            summary: Java App {{ $labels.namespace }}/{{ $labels.pod }} ({{ $labels.container }}) uses more than 256 Mi Memory
