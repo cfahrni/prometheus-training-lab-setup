@@ -15,7 +15,7 @@ spec:
         app: example-web-python
     spec:
       containers:
-      - image: quay.io/acend/example-web-python:fail
+      - image: quay.io/acend/example-web-python
         name: example-web-python
         resources:
           requests:
