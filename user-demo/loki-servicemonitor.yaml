@@ -13,4 +13,4 @@ spec:
       path: /metrics
   selector:
     matchLabels:
-      prometheus-monitoring: 'true'
+      app: loki
