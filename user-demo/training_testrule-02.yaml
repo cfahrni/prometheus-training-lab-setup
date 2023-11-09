@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: testrule-02
+spec:
+  groups:
+    - name: job-rules
+      rules:
+        - alert: target-down
+          expr: up == 0
+          for: 2m
+          labels:
+            user: cfahrni
+          annotations:
+            summary: Instance {{ $labels.instance }} of job {{ $labels.job }} in namespace {{ $labels.namespace }} is down
